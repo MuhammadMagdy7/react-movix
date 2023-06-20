@@ -1,34 +1,19 @@
 import React from "react";
-import { BsChevronDown } from "react-icons/bs";
-import { HiOutlineSearch } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 
+const Menu = ({ data }) => {
+  const navigate = useNavigate();
 
-const Menu = ({ showCatMenu, setShowCatMenu, data }) => {
   return (
     <ul className="hidden md:flex  gap-8 font-medium text-white">
-      {data.map((item) => {
-        return (
-          <React.Fragment key={item.id}>
-            {!!item?.subMenu ? (
-              <li
-                className="cursor-pointer flex gap-2 relative"
-                onMouseEnter={() => setShowCatMenu(true)}
-                onMouseLeave={() => setShowCatMenu(false)}
-              >
-                {item.name}
-                <BsChevronDown size={14} />
-
-                {showCatMenu && <></>}
-              </li>
-            ) : (
-              <li className="cursor-pointer">
-                <a href={item?.url}>{item.name}</a>
-              </li>
-            )}
-          </React.Fragment>
-        );
-      })}
+      {data.map((item) => (
+        <li className="cursor-pointer">
+          <button href={item?.url} onClick={()=>{
+            navigate(item?.url)
+          }} >{item.name}</button>
+        </li>
+      ))}
     </ul>
   );
 };

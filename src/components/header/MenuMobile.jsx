@@ -1,5 +1,4 @@
 import React from "react";
-import { BsChevronDown } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const MenuMobile = ({ setMobileMenu, data }) => {
